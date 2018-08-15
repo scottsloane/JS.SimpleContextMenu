@@ -22,7 +22,7 @@
   </div>
 <script src="jssimplecontextmenu.js"></script>
 <script>
-  ContextMenu.setAction((action) => {
+  ContextMenu.setAction((action, info) => {
     switch(action) {
 	case 'doSearch' : alert('Search DB1 ' + info);
 		break;
