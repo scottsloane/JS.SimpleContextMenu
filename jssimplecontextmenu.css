@@ -1,0 +1,40 @@
+:root{
+	--UI-Title : #A9B7C6;
+	--UI-Title-Alt : #D25252;
+	--UI-Background : #2B2B2B;
+	--UI-Background-Alt : #7E7E7E;
+}
+
+.rmenu {
+    z-index:1000;
+    position: absolute;
+    background-color:#C0C0C0;
+    border: 1px solid var(--UI-Title);
+    padding: 0px;
+    display: block;
+    margin: 0;
+    list-style-type: none;
+    list-style: none;
+}
+
+.hide {
+    display: none;
+}
+
+.rmenu ul{
+	padding : 0px;
+	margin : 0px;
+}
+.rmenu li{ 
+	list-style: none;
+	background-color : var(--UI-Background);
+	color : var(--UI-Title)
+}
+.rmenu li:hover{
+	background-color : var(--UI-Background-Alt);
+	color : var(--UI-Title-Alt)
+}
+.rmenu span { 
+	border: 0 !important; text-decoration: none;
+	
+}
