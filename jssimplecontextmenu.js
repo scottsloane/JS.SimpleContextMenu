@@ -2,11 +2,14 @@ var ContextMenu = (function(){
 	let contexts = {};
 	let contextShown = false;
 	let cb = null;
+	var info = null;
 	
 	var _init = function(){
 		document.addEventListener('contextmenu',(e) => {
 			createContext( (e.target && e.target.dataset.context) ? e.target.dataset.context : false);
 
+			info = (e.target && e.target.dataset.info) ? e.target.dataset.info : null;
+			
 			contextShown = true;
 			document.getElementById("rmenu").className = "rmenu show";  
 			document.getElementById("rmenu").style.top =  mouseY(event) + 'px';
@@ -32,7 +35,7 @@ var ContextMenu = (function(){
 				el = e.target
 			}
 			if(el != null){
-				if(cb) cb(el.dataset.url);
+				if(cb) cb(el.dataset.url, (info) ? info : null);
 				else console.log("No Action Callback: " + el.dataset.url);
 			}
 		});
@@ -96,7 +99,5 @@ var ContextMenu = (function(){
 		addContext : addContext,
 		defaultContext : defaultContext,
 		setAction : setAction
-	}
-	
-	
+	}	
 })();
