@@ -1,0 +1,52 @@
+<html>
+<head>
+  <div id="main">
+    <h1 data-context='del' id='header'>Right Click for Context Menu</h1>
+    <div class="option" data-context='obj'></div>
+    <div class="rmenu hide" id="rmenu"></div>
+  </div>
+</head>
+<body>
+<script src="jssimplecontextmenu.js"></script>
+<script>
+  ContextMenu.setAction((action) => {
+    switch(action) {
+      case 'closeHeader' : document.getElementById('header').className = 'hide';
+        break;
+      case 'doRefresh' : document.getElementById('header').className = '';
+        break;
+      case 'doPopup' : alert("I'm a Popup");
+        break;
+      case 'doConsole' : console.log('this is the console');
+        break;
+      case 'openHelp' : alert('There is no help for you');
+        break;
+      case 'doExit' : document.getElementById('main').className = 'hide';
+        break;
+    }
+  });
+
+  ContextMenu.addContext('del', [{
+    name : 'Close Header',
+    url : 'closeHeader'
+  }]);
+  ContextMenu.addContext('obj', [{
+    name : 'Make a popup',
+    url : 'doPopup'
+  },{
+    name : 'Console Me',
+    url : 'doConsole'
+  }])
+  ContextMenu.defaultContext([{
+    name : 'Reload',
+    url : 'doRefresh'
+  },{
+    name : 'Help',
+    url : 'openHelp'
+  },{
+    name : 'Close',
+    url : 'doExit'
+  }]);
+</script>
+</body>
+</html>
