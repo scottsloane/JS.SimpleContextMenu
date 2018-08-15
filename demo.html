@@ -17,24 +17,29 @@
   <div id="main">
     <h1 data-context='del' id='header'>Right Click for Context Menu</h1>
     <div class="option" data-context='obj'></div>
+	  <div><span data-context='search' data-info="some link">Some Link</span></div>
     <div class="rmenu hide" id="rmenu"></div>
   </div>
 <script src="jssimplecontextmenu.js"></script>
 <script>
   ContextMenu.setAction((action) => {
     switch(action) {
-      case 'closeHeader' : document.getElementById('header').className = 'hide';
-        break;
-      case 'doRefresh' : document.getElementById('header').className = '';
-        break;
-      case 'doPopup' : alert("I'm a Popup");
-        break;
-      case 'doConsole' : console.log('this is the console');
-        break;
-      case 'openHelp' : alert('There is no help for you');
-        break;
-      case 'doExit' : document.getElementById('main').className = 'hide';
-        break;
+	case 'doSearch' : alert('Search DB1 ' + info);
+		break;
+	case 'doSearch2' : alert('Search DB2 ' + info);
+		break;
+      	case 'closeHeader' : document.getElementById('header').className = 'hide';
+        	break;
+      	case 'doRefresh' : document.getElementById('header').className = '';
+        	break;
+      	case 'doPopup' : alert("I'm a Popup");
+        	break;
+      	case 'doConsole' : console.log('this is the console');
+        	break;
+      	case 'openHelp' : alert('There is no help for you');
+        	break;
+      	case 'doExit' : document.getElementById('main').className = 'hide';
+        	break;
     }
   });
 
@@ -48,7 +53,14 @@
   },{
     name : 'Console Me',
     url : 'doConsole'
-  }])
+  }]);
+ContextMenu.addContext('search', [{
+name : 'Search DB1',
+url : 'doSearch'
+},{
+	name : 'Search DB2',
+	url : 'doSearch2'
+}]);
   ContextMenu.defaultContext([{
     name : 'Reload',
     url : 'doRefresh'
